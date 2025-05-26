@@ -17,6 +17,30 @@ This repository contains a modular pipeline for variant calling on single-cell R
 - [cellsnp-lite](https://github.com/single-cell-genetics/cellsnp-lite)
 - Unix/Linux shell
 
+## Reference File Preparation
+
+You will need:
+
+- **Reference genome** directory (e.g., from 10x Genomics or built via `cellranger mkref`)
+- **SNP VCF** file (e.g., dbSNP or 1000 Genomes, bgzipped and tabix-indexed)
+
+**Example commands (for human):**
+
+```bash
+# Download Cell Ranger reference (GRCh38)
+wget https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-2020-A.tar.gz
+tar -xzf refdata-gex-GRCh38-2020-A.tar.gz
+
+# Download and index SNP VCF
+wget https://ftp.ncbi.nih.gov/snp/latest_release/VCF/GCF_000001405.39.gz
+tabix -p vcf GCF_000001405.39.gz
+```
+
+- For other species, obtain reference and SNP VCFs from Ensembl, NCBI, or appropriate consortia.
+- Set the reference genome path in Cell Ranger (`--transcriptome=...`).
+- Provide the SNP VCF path to the pipeline when prompted.
+
+
 ## Usage
 
 ### 1. Process FASTQ with Cell Ranger
