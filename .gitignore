@@ -1,0 +1,28 @@
+
+---
+
+## **.gitignore**
+
+```gitignore
+# Ignore large sequencing and alignment files
+*.bam
+*.bai
+*.fastq
+*.fq
+*.sam
+*.vcf
+*.gz
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+
+# Python cache and misc system files
+__pycache__/
+*.pyc
+.DS_Store
+
+# Intermediate/output
+snv_result/
+bampercell/
+per_cell_bams/
