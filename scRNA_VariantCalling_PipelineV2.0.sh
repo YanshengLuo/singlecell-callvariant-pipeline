@@ -56,9 +56,9 @@
 #SBATCH --cpus-per-task=16              # Number of CPU cores per task
 #SBATCH --mem=64G                       # Amount of RAM (e.g., 64GB)
 #SBATCH --time=120:00:00                # Maximum job run time (HH:MM:SS)
-#SBATCH --output=/orange/qsong1/Yansheng/scproj/logs/%x_%j.out # Standard output file
-#SBATCH --error=/orange/qsong1/Yansheng/scproj/logs/%x_%j.err   # Standard error file
-#SBATCH --mail-user=yanshengluo@ufl.edu # Email address for notifications
+#SBATCH --output=/%x_%j.out # Standard output file
+#SBATCH --error=/%x_%j.err   # Standard error file
+#SBATCH --mail-user= # Email address for notifications
 #SBATCH --mail-type=BEGIN,END,FAIL      # Email notifications for job start, end, and failure
 
 # Exit immediately if a command exits with a non-zero status.
