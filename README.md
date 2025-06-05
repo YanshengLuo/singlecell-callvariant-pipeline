@@ -41,11 +41,35 @@ tabix -p vcf GCF_000001405.39.gz
 - Provide the SNP VCF path to the pipeline when prompted.
 
 
-## Usage
+## Processing Barcoded Single-Cell Data (10x, Drop-seq)
 
-### 1. Process FASTQ with Cell Ranger
+For data containing single-cell barcodes (e.g., 10x Genomics, Drop-seq), use our integrated SLURM pipeline:
 
-Generate a barcoded, coordinate-sorted BAM file:
+### Introduction: scRNA_VariantCalling_PipelineV2.0.sh
+
+`scRNA_VariantCalling_PipelineV2.0.sh` is an end-to-end pipeline that takes raw FASTQ files through alignment (using Cell Ranger or STARsolo), performs quality control, and runs per-cell variant calling using cellsnp-lite.
+
+It's designed for use on HPC clusters with SLURM and supports 10x Genomics, Drop-seq, and plate-based protocols.
+
+### Key Features
+
+* **detects protocol**: Supports 10x Genomics, Drop-Seq, and SMART-Seq2/plate data.
+* **End-to-end**: Handles FastQC, alignment, barcode handling, and per-cell variant calling.
+* **No hardcoded paths or user info**: Adaptable for any lab or HPC setup.
+* Compatible with modular environments and conda.
+
+### Usage
+
+Submit your job (edit the script to match your paths and reference files):
+
+```bash
+sbatch scRNA_VariantCalling_PipelineV2.0.sh <SAMPLE_ID> <PROTOCOL>
+```
+
+## Processing sc-RNA without barcode
+### 1. Process FASTQ with Cell Ranger or any alignment tools
+
+Generate a coordinate-sorted BAM file with Tag:
 
 ```bash
 cellranger count \
@@ -106,6 +130,7 @@ Please cite:
 - [samtools](http://www.htslib.org/)
 - [cellsnp-lite](https://github.com/single-cell-genetics/cellsnp-lite)
 - [pysam](https://github.com/pysam-developers/pysam)
+- [STAR](https://github.com/alexdobin/STAR)
 
 ---
 
